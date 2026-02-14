@@ -1,0 +1,14 @@
+Design Approach For Each Page
+
+
+THEME - Restaurant Menu Book
+
+Each page is a Menu page, the whole website is a Menu Book on a table.
+
+The font will be this - https://fonts.google.com/specimen/Great+Vibes?lang=fod_Latn ( as this give very restaurant type vibe to me atleast)
+
+Text  and icons will be in golden color , and background(of menu) will be black(or dark shades).
+
+All the buttons are represented through icons ( as menu's have images on which stand out).
+
+Transition of pages will be represented by page flipping animation.
