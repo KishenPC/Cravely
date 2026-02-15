@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import ListArrow from "../Assets/ListArrow.png";
+import SearchResultsPage from "./SearchResultsPage";
 
 export default function SearchView({ onGoBack }) {
   const [query, setQuery] = useState("");
@@ -44,10 +45,9 @@ export default function SearchView({ onGoBack }) {
       <div className="relative flex-1 h-full bg-linear-to-b from-gray-600 to-gray-800 flex justify-center shadow-[0px_15px_25px_0px_rgba(0,0,0,0.5)]">
         <div className="flex flex-col h-[92%] w-[92%] border-10 border-amber-300 self-center items-center justify-between py-8">
           {/* Title */}
-          <div className="flex-1 flex items-center justify-center px-6">
-            <h1 className="text-4xl text-amber-100 font-[Great_Vibes] text-center leading-snug drop-shadow-lg">
+          <div className="px-10 flex-1 flex items-center justify-center">
+            <h1 className=" text-4xl text-amber-100 font-[Great_Vibes] text-center leading-snug drop-shadow-lg">
               What do you
-              <br />
               want to eat?
             </h1>
           </div>
@@ -86,41 +86,7 @@ export default function SearchView({ onGoBack }) {
       </div>
 
       {/* ── Right page: Results ── */}
-      <div className="relative flex-1 h-full bg-linear-to-b from-gray-600 to-gray-800 flex justify-center shadow-[0px_15px_25px_0px_rgba(0,0,0,0.5)]">
-        <div className="flex flex-col h-[92%] w-[92%] border-10 border-gray-500/50 shadow-[0px_0px_15px_0px_rgba(100,100,100,0.3)] self-center py-4 overflow-y-auto custom-scrollbar">
-          {query.trim() === "" ? (
-            /* Empty state - no search yet */
-            <div className="flex-1 flex items-center justify-center">
-              <p className="text-2xl text-white/30 font-[Great_Vibes] text-center">
-                Start typing to
-                <br />
-                find dishes...
-              </p>
-            </div>
-          ) : loading ? (
-            /* Loading */
-            <div className="flex-1 flex items-center justify-center">
-              <p className="text-2xl text-amber-300/50 font-[Great_Vibes] text-center animate-pulse">
-                Searching...
-              </p>
-            </div>
-          ) : results.length === 0 ? (
-            /* No results */
-            <div className="flex-1 flex items-center justify-center">
-              <p className="text-2xl text-white/40 font-[Great_Vibes] text-center">
-                No dishes found
-              </p>
-            </div>
-          ) : (
-            /* Dish results */
-            <div className="flex flex-col gap-2 px-4">
-              {results.map((dish, index) => (
-                <DishResult key={dish._id} dish={dish} index={index} />
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+      <SearchResultsPage query={query} loading={loading} results={results} />
     </div>
   );
 }
